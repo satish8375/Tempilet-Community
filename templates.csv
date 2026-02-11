@@ -1,1 +1,4 @@
 id,template_name,author_name,json_url,preview_url,tags
+1,Employee ID Card,Community,https://raw.githubusercontent.com/satish8375/Tempilet-Community/main/templates/id_card.json,https://raw.githubusercontent.com/satish8375/Tempilet-Community/main/previews/id_card.png,General
+2,Resume - Sunil Kumar,Community,https://raw.githubusercontent.com/satish8375/Tempilet-Community/main/templates/resume_simple.json,https://raw.githubusercontent.com/satish8375/Tempilet-Community/main/previews/resume_simple.png,General
+3,Professional Visiting Card,Community,https://raw.githubusercontent.com/satish8375/Tempilet-Community/main/templates/visiting_card.json,https://raw.githubusercontent.com/satish8375/Tempilet-Community/main/previews/visiting_card.png,General
