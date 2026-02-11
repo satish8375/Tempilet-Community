@@ -1,0 +1,143 @@
+{
+  "name": "Professional Visiting Card",
+  "width": 1000,
+  "height": 600,
+  "backgroundColor": -1,
+  "elements": [
+    {
+      "type": "shape",
+      "id": "header_shape",
+      "shapeType": "RECTANGLE",
+      "strokeColor": -16777216,
+      "strokeWidth": 0.0,
+      "fillColor": -16776961,
+      "rect": {
+        "left": 0.0,
+        "top": 0.0,
+        "right": 1000.0,
+        "bottom": 150.0
+      },
+      "rotation": 0.0,
+      "zIndex": 0,
+      "isLocked": true,
+      "isVisible": true
+    },
+    {
+      "type": "text",
+      "id": "company_name",
+      "text": "YOUR COMPANY",
+      "fontSize": 60.0,
+      "textColor": -1,
+      "isBold": true,
+      "isItalic": false,
+      "rect": {
+        "left": 50.0,
+        "top": 40.0,
+        "right": 600.0,
+        "bottom": 120.0
+      },
+      "rotation": 0.0,
+      "zIndex": 1,
+      "isLocked": false,
+      "isVisible": true,
+      "alignment": "LEFT"
+    },
+    {
+      "type": "text",
+      "id": "person_name",
+      "text": "{{Name:John Doe}}",
+      "fontSize": 50.0,
+      "textColor": -16777216,
+      "isBold": true,
+      "isItalic": false,
+      "rect": {
+        "left": 50.0,
+        "top": 200.0,
+        "right": 600.0,
+        "bottom": 260.0
+      },
+      "rotation": 0.0,
+      "zIndex": 2,
+      "isLocked": false,
+      "isVisible": true,
+      "alignment": "LEFT"
+    },
+    {
+      "type": "text",
+      "id": "designation",
+      "text": "{{Title:General Manager}}",
+      "fontSize": 35.0,
+      "textColor": -7829368,
+      "isBold": false,
+      "isItalic": false,
+      "rect": {
+        "left": 50.0,
+        "top": 260.0,
+        "right": 600.0,
+        "bottom": 310.0
+      },
+      "rotation": 0.0,
+      "zIndex": 3,
+      "isLocked": false,
+      "isVisible": true,
+      "alignment": "LEFT"
+    },
+    {
+      "type": "text",
+      "id": "contact_info",
+      "text": "Mob: {{Mobile:+91 98765 43210}}\nEmail: {{Email:john@example.com}}\nWeb: www.example.com",
+      "fontSize": 30.0,
+      "textColor": -12303292,
+      "isBold": false,
+      "isItalic": false,
+      "rect": {
+        "left": 50.0,
+        "top": 400.0,
+        "right": 500.0,
+        "bottom": 550.0
+      },
+      "rotation": 0.0,
+      "zIndex": 4,
+      "isLocked": false,
+      "isVisible": true,
+      "alignment": "LEFT"
+    },
+    {
+      "type": "qrcode",
+      "id": "qr_website",
+      "data": "https://www.example.com",
+      "rect": {
+        "left": 750.0,
+        "top": 350.0,
+        "right": 950.0,
+        "bottom": 550.0
+      },
+      "rotation": 0.0,
+      "zIndex": 5,
+      "isLocked": false,
+      "isVisible": true
+    },
+    {
+      "type": "shape",
+      "id": "footer_line",
+      "shapeType": "RECTANGLE",
+      "strokeColor": -16776961,
+      "strokeWidth": 0.0,
+      "fillColor": -16776961,
+      "rect": {
+        "left": 0.0,
+        "top": 580.0,
+        "right": 1000.0,
+        "bottom": 600.0
+      },
+      "rotation": 0.0,
+      "zIndex": 6,
+      "isLocked": true,
+      "isVisible": true
+    }
+  ],
+  "tags": [
+    "Business",
+    "Visiting Card"
+  ]
+}
