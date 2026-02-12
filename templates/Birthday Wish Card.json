@@ -1,0 +1,62 @@
+{
+  "name": "Birthday_Greeting_Card",
+  "width": 1080,
+  "height": 1920,
+  "backgroundColor": -256,
+  "lastModified": 1770792746641,
+  "version": 1,
+  "tags": ["Birthday", "Personal"],
+  "elements": [
+    {
+      "type": "shape",
+      "shapeType": "RECTANGLE",
+      "rect": {"left": 40.0, "top": 40.0, "right": 1040.0, "bottom": 1880.0},
+      "strokeColor": -65536,
+      "strokeWidth": 10.0,
+      "fillColor": 0,
+      "alpha": 255,
+      "id": "border_1",
+      "zIndex": 0
+    },
+    {
+      "type": "text",
+      "text": "HAPPY BIRTHDAY!",
+      "fontSize": 85.0,
+      "isBold": true,
+      "textColor": -16777216,
+      "alignment": "CENTER",
+      "rect": {"left": 100.0, "top": 300.0, "right": 980.0, "bottom": 450.0},
+      "id": "heading_text",
+      "zIndex": 1
+    },
+    {
+      "type": "text",
+      "text": "{{Field_1:NAME HERE}}",
+      "fontSize": 70.0,
+      "isBold": true,
+      "textColor": -65536,
+      "alignment": "CENTER",
+      "rect": {"left": 100.0, "top": 850.0, "right": 980.0, "bottom": 950.0},
+      "id": "dynamic_name",
+      "zIndex": 2
+    },
+    {
+      "type": "text",
+      "text": "Wishing you a day filled with happiness\nand a year filled with joy!",
+      "fontSize": 35.0,
+      "textColor": -16777216,
+      "alignment": "CENTER",
+      "rect": {"left": 100.0, "top": 1000.0, "right": 980.0, "bottom": 1200.0},
+      "id": "message_text",
+      "zIndex": 3
+    },
+    {
+      "type": "qrcode",
+      "data": "Wishing you a great life ahead!",
+      "rect": {"left": 400.0, "top": 1400.0, "right": 680.0, "bottom": 1680.0},
+      "alpha": 255,
+      "id": "wish_qr",
+      "zIndex": 4
+    }
+  ]
+}

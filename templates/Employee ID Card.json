@@ -1,0 +1,59 @@
+{
+  "name": "Employee_ID_Card",
+  "width": 1080,
+  "height": 1920,
+  "backgroundColor": -1,
+  "lastModified": 1770792746641,
+  "version": 1,
+  "tags": ["ID_Card", "Office"],
+  "elements": [
+    {
+      "type": "shape",
+      "shapeType": "RECTANGLE",
+      "rect": {"left": 290.0, "top": 200.0, "right": 790.0, "bottom": 700.0},
+      "strokeColor": -16777216,
+      "strokeWidth": 4.0,
+      "fillColor": -3355444,
+      "id": "photo_box",
+      "zIndex": 0
+    },
+    {
+      "type": "text",
+      "text": "PHOTO",
+      "fontSize": 30.0,
+      "textColor": -16777216,
+      "alignment": "CENTER",
+      "rect": {"left": 440.0, "top": 430.0, "right": 640.0, "bottom": 480.0},
+      "id": "photo_label",
+      "zIndex": 1
+    },
+    {
+      "type": "text",
+      "text": "{{Field_1:FULL NAME}}",
+      "fontSize": 50.0,
+      "isBold": true,
+      "textColor": -16777216,
+      "alignment": "CENTER",
+      "rect": {"left": 100.0, "top": 800.0, "right": 980.0, "bottom": 880.0},
+      "id": "name_field",
+      "zIndex": 2
+    },
+    {
+      "type": "text",
+      "text": "ID: {{Field_2:EMP12345}}",
+      "fontSize": 35.0,
+      "textColor": -16777216,
+      "alignment": "CENTER",
+      "rect": {"left": 100.0, "top": 920.0, "right": 980.0, "bottom": 980.0},
+      "id": "id_field",
+      "zIndex": 3
+    },
+    {
+      "type": "barcode",
+      "barcodeData": "{{Field_2:EMP12345}}",
+      "rect": {"left": 200.0, "top": 1100.0, "right": 880.0, "bottom": 1250.0},
+      "id": "id_barcode",
+      "zIndex": 4
+    }
+  ]
+}

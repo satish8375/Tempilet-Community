@@ -1,0 +1,78 @@
+{
+  "name": "Professional_Business_Card",
+  "width": 1080,
+  "height": 1920,
+  "backgroundColor": -1,
+  "lastModified": 1770792746641,
+  "version": 1,
+  "tags": ["Business", "Corporate"],
+  "elements": [
+    {
+      "type": "shape",
+      "shapeType": "RECTANGLE",
+      "rect": {"left": 0.0, "top": 0.0, "right": 1080.0, "bottom": 500.0},
+      "fillColor": -16777216,
+      "alpha": 255,
+      "id": "top_bar",
+      "zIndex": 0
+    },
+    {
+      "type": "text",
+      "text": "COMPANY NAME",
+      "fontSize": 65.0,
+      "isBold": true,
+      "textColor": -1,
+      "alignment": "CENTER",
+      "rect": {"left": 100.0, "top": 150.0, "right": 980.0, "bottom": 250.0},
+      "id": "comp_name",
+      "zIndex": 1
+    },
+    {
+      "type": "text",
+      "text": "{{Field_1:EMPLOYEE NAME}}",
+      "fontSize": 55.0,
+      "isBold": true,
+      "textColor": -16777216,
+      "alignment": "CENTER",
+      "rect": {"left": 100.0, "top": 600.0, "right": 980.0, "bottom": 700.0},
+      "id": "emp_name",
+      "zIndex": 2
+    },
+    {
+      "type": "text",
+      "text": "{{Field_2:Designation}}",
+      "fontSize": 32.0,
+      "textColor": -7829368,
+      "alignment": "CENTER",
+      "rect": {"left": 100.0, "top": 720.0, "right": 980.0, "bottom": 780.0},
+      "id": "designation",
+      "zIndex": 3
+    },
+    {
+      "type": "shape",
+      "shapeType": "LINE",
+      "rect": {"left": 200.0, "top": 850.0, "right": 880.0, "bottom": 850.0},
+      "strokeColor": -16777216,
+      "strokeWidth": 3.0,
+      "id": "divider",
+      "zIndex": 4
+    },
+    {
+      "type": "text",
+      "text": "📞 {{Field_3:+91 0000000000}}\n✉ {{Field_4:email@company.com}}\n🌐 www.website.com",
+      "fontSize": 30.0,
+      "textColor": -16777216,
+      "alignment": "LEFT",
+      "rect": {"left": 150.0, "top": 950.0, "right": 930.0, "bottom": 1150.0},
+      "id": "contact_info",
+      "zIndex": 5
+    },
+    {
+      "type": "qrcode",
+      "data": "{{Field_5:VCard_Data}}",
+      "rect": {"left": 390.0, "top": 1300.0, "right": 690.0, "bottom": 1600.0},
+      "id": "contact_qr",
+      "zIndex": 6
+    }
+  ]
+}
