@@ -1,8 +1,10 @@
 name: Auto Update Template Index
 
-# यह स्क्रिप्ट तब चलेगी जब कोई /templates फोल्डर में फाइल अपलोड (Push) करेगा
 on:
+  # अब यह केवल तब चलेगा जब 'main' ब्रांच में बदलाव (Merge) होगा
   push:
+    branches:
+      - main
     paths:
       - 'templates/**'
 
@@ -10,7 +12,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     
-    # स्क्रिप्ट को फाइल लिखने की अनुमति देना
     permissions:
       contents: write
 
@@ -18,36 +19,34 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      # सुरक्षा के लिए: चेक करें कि क्या JSON सही (Valid) है
+      - name: Validate JSON Files
+        run: |
+          shopt -s nullglob
+          for file in templates/*.json; do
+            jq . "$file" > /dev/null || (echo "❌ Error: $file is not a valid JSON" && exit 1)
+          done
+
       - name: Regenerate templates.csv
         run: |
-          # 1. CSV के हेडर लिखें (पुरानी फाइल को ओवरराइट करें)
           echo "id,template_name,author_name,json_url,preview_url,tags" > templates.csv
-
-          # 2. काउन्टर सेट करें
           count=1
           repo_url="https://raw.githubusercontent.com/${{ github.repository }}/main"
 
-          # 3. /templates फोल्डर की सभी .json फाइलों पर लूप चलाएं
-          # हम 'null' को रोकने के लिए चेक भी लगाएंगे
           shopt -s nullglob
           for file in templates/*.json; do
             filename=$(basename "$file")
             name_only="${filename%.*}"
             
-            # JSON फाइल के अंदर से "name" निकालने की कोशिश करें (jq टूल का उपयोग करके)
-            # अगर नाम नहीं मिलता, तो फाइल का नाम ही इस्तेमाल करें
+            # JSON से नाम निकालें, नहीं तो फाइल का नाम इस्तेमाल करें
             template_name=$(jq -r '.name // empty' "$file" || echo "$name_only")
-            if [ -z "$template_name" ]; then template_name="$name_only"; fi
+            if [ -z "$template_name" ] || [ "$template_name" == "null" ]; then template_name="$name_only"; fi
             
             author_name="Community"
-            
-            # URL का निर्माण करें
             json_url="${repo_url}/templates/${filename}"
             preview_url="${repo_url}/previews/${name_only}.png"
             
-            # 4. CSV में नई लाइन जोड़ें
             echo "$count,$template_name,$author_name,$json_url,$preview_url,General" >> templates.csv
-            
             count=$((count + 1))
           done
 
@@ -56,5 +55,4 @@ jobs:
           git config --global user.name "Tempilet-Bot"
           git config --global user.email "bot@tempilet.com"
           git add templates.csv
-          # केवल तभी कमिट करें जब बदलाव हुए हों
           git diff --quiet && git diff --staged --quiet || (git commit -m "🤖 Auto-update index [skip ci]" && git push)
