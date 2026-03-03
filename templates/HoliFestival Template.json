@@ -1,0 +1,100 @@
+{
+  "name": "Holi_Political_Poster",
+  "width": 1080,
+  "height": 1350,
+  "backgroundColor": -1,
+  "lastModified": 1770792746641,
+  "version": 1,
+  "tags": ["Festival", "Political", "Hindi"],
+  "elements": [
+    {
+      "type": "shape",
+      "shapeType": "RECTANGLE",
+      "rect": {"left": 0.0, "top": 0.0, "right": 1080.0, "bottom": 350.0},
+      "fillColor": -256,
+      "alpha": 255,
+      "id": "leader_section_bg",
+      "zIndex": 0
+    },
+    {
+      "type": "text",
+      "text": "भारतीय जनता पार्टी",
+      "fontSize": 55.0,
+      "isBold": true,
+      "textColor": -65536,
+      "alignment": "CENTER",
+      "rect": {"left": 100.0, "top": 380.0, "right": 980.0, "bottom": 460.0},
+      "id": "party_name",
+      "zIndex": 1
+    },
+    {
+      "type": "text",
+      "text": "आप सभी देशवासियों को",
+      "fontSize": 32.0,
+      "textColor": -16777216,
+      "alignment": "CENTER",
+      "rect": {"left": 100.0, "top": 470.0, "right": 980.0, "bottom": 520.0},
+      "id": "greeting_line_1",
+      "zIndex": 2
+    },
+    {
+      "type": "text",
+      "text": "रंगों का महापर्व",
+      "fontSize": 45.0,
+      "isBold": true,
+      "textColor": -16711681,
+      "alignment": "CENTER",
+      "rect": {"left": 100.0, "top": 550.0, "right": 980.0, "bottom": 630.0},
+      "id": "sub_heading",
+      "zIndex": 3
+    },
+    {
+      "type": "text",
+      "text": "होली",
+      "fontSize": 180.0,
+      "isBold": true,
+      "textColor": -65536,
+      "alignment": "CENTER",
+      "rect": {"left": 50.0, "top": 650.0, "right": 1030.0, "bottom": 880.0},
+      "id": "main_festival_name",
+      "zIndex": 4
+    },
+    {
+      "type": "text",
+      "text": "की हार्दिक बधाई एवं शुभकामनाएं",
+      "fontSize": 35.0,
+      "textColor": -12627457,
+      "alignment": "CENTER",
+      "rect": {"left": 100.0, "top": 900.0, "right": 980.0, "bottom": 960.0},
+      "id": "wishing_line",
+      "zIndex": 5
+    },
+    {
+      "type": "image",
+      "id": "image_placeholder_user",
+      "rect": {"left": 750.0, "top": 1000.0, "right": 1030.0, "bottom": 1300.0},
+      "alpha": 255,
+      "zIndex": 6
+    },
+    {
+      "type": "text",
+      "text": "{{Field_1:आपका नाम यहाँ}}",
+      "fontSize": 40.0,
+      "isBold": true,
+      "textColor": -1,
+      "alignment": "RIGHT",
+      "rect": {"left": 300.0, "top": 1260.0, "right": 730.0, "bottom": 1320.0},
+      "id": "user_name",
+      "zIndex": 7
+    },
+    {
+      "type": "shape",
+      "shapeType": "RECTANGLE",
+      "rect": {"left": 0.0, "top": 1250.0, "right": 1080.0, "bottom": 1350.0},
+      "fillColor": -16711936,
+      "alpha": 255,
+      "id": "footer_strip",
+      "zIndex": 8
+    }
+  ]
+}
