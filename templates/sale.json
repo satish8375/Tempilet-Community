@@ -1,0 +1,53 @@
+{
+  "name": "Mega_Sale_Native_JSON",
+  "width": 1080,
+  "height": 1080,
+  "backgroundColor": -65536, /* लाल बैकग्राउंड */
+  "elements": [
+    /* पीछे की सफ़ेद तिरछी पट्टी */
+    {
+      "type": "shape",
+      "shapeType": "RECTANGLE",
+      "fillColor": -1,
+      "rect": {"left": -200, "top": 400, "right": 1300, "bottom": 800},
+      "rotation": -15.0,
+      "zIndex": 1
+    },
+    /* मुख्य टेक्स्ट: SALE */
+    {
+      "type": "text",
+      "text": "BIG SALE",
+      "fontSize": 120.0,
+      "isBold": true,
+      "textColor": -1,
+      "alignment": "CENTER",
+      "rect": {"left": 50, "top": 100, "right": 1030, "bottom": 250},
+      "zIndex": 5
+    },
+    /* डिस्काउंट का गोला */
+    {
+      "type": "shape",
+      "shapeType": "OVAL",
+      "fillColor": -256, /* पीला */
+      "rect": {"left": 750, "top": 700, "right": 1000, "bottom": 950},
+      "zIndex": 10
+    },
+    {
+      "type": "text",
+      "text": "70%\nOFF",
+      "fontSize": 45.0,
+      "isBold": true,
+      "textColor": -16777216,
+      "alignment": "CENTER",
+      "rect": {"left": 770, "top": 780, "right": 980, "bottom": 900},
+      "zIndex": 11
+    },
+    /* प्रोडक्ट की फोटो के लिए जगह */
+    {
+      "type": "image",
+      "id": "image_placeholder_product",
+      "rect": {"left": 200, "top": 300, "right": 800, "bottom": 900},
+      "zIndex": 20
+    }
+  ]
+}
