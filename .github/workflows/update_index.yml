@@ -1,35 +1,42 @@
 name: Auto Update Template Index
 
 on:
-  # अब यह केवल तब चलेगा जब 'main' ब्रांच में बदलाव (Merge) होगा
   push:
     branches:
       - main
     paths:
       - 'templates/**'
+      - 'previews/**'
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+
     permissions:
       contents: write
 
     steps:
+
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      # सुरक्षा के लिए: चेक करें कि क्या JSON सही (Valid) है
+      - name: Install jq
+        run: sudo apt-get update && sudo apt-get install -y jq
+
+      # JSON validation
       - name: Validate JSON Files
         run: |
           shopt -s nullglob
           for file in templates/*.json; do
+            echo "Checking $file"
             jq . "$file" > /dev/null || (echo "❌ Error: $file is not a valid JSON" && exit 1)
           done
 
+      # Generate CSV
       - name: Regenerate templates.csv
         run: |
           echo "id,template_name,author_name,json_url,preview_url,tags" > templates.csv
+
           count=1
           repo_url="https://raw.githubusercontent.com/${{ github.repository }}/main"
 
@@ -37,22 +44,34 @@ jobs:
           for file in templates/*.json; do
             filename=$(basename "$file")
             name_only="${filename%.*}"
-            
-            # JSON से नाम निकालें, नहीं तो फाइल का नाम इस्तेमाल करें
-            template_name=$(jq -r '.name // empty' "$file" || echo "$name_only")
-            if [ -z "$template_name" ] || [ "$template_name" == "null" ]; then template_name="$name_only"; fi
-            
+
+            template_name=$(jq -r '.name // empty' "$file")
+            if [ -z "$template_name" ] || [ "$template_name" == "null" ]; then
+              template_name="$name_only"
+            fi
+
             author_name="Community"
+
             json_url="${repo_url}/templates/${filename}"
             preview_url="${repo_url}/previews/${name_only}.png"
-            
+
             echo "$count,$template_name,$author_name,$json_url,$preview_url,General" >> templates.csv
+
             count=$((count + 1))
           done
 
+      # Commit changes
       - name: Commit and Push Changes
         run: |
           git config --global user.name "Tempilet-Bot"
           git config --global user.email "bot@tempilet.com"
+
           git add templates.csv
-          git diff --quiet && git diff --staged --quiet || (git commit -m "🤖 Auto-update index [skip ci]" && git push)
+
+          if git diff --staged --quiet
+          then
+            echo "No changes to commit"
+          else
+            git commit -m "🤖 Auto-update index [skip ci]"
+            git push
+          fi
