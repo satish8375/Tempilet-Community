@@ -11,5 +11,5 @@ Welcome to the Tempilet Community! Here you can share your designs with the worl
 6. **Important:** After uploading, wait for the admin to update the `templates.csv` file, or if you know how, edit it yourself!
 
 ### 📢 Contribution Rules:
-- No copyright-protected images.
+- No copyright-protected images .
 - Keep the design clean and useful for others.
