@@ -26,7 +26,7 @@ jobs:
         run: |
           echo "Checking JSON files..."
           shopt -s nullglob
-          # IFS use karne se filenames mein space hone par script nahi tootegi
+          # IFS se filenames ke spaces handle honge
           IFS=$'\n'
           for file in templates/*.json; do
             echo "Validating $file"
@@ -49,7 +49,7 @@ jobs:
             filename=$(basename "$file")
             name_only="${filename%.*}"
 
-            # Quotes lagaye hain taaki space se error na aaye
+            # Quotes add kiye hain taaki spaces se crash na ho
             template_name=$(jq -r '.name // empty' "$file")
 
             if [ -z "$template_name" ] || [ "$template_name" == "null" ]; then
@@ -58,9 +58,12 @@ jobs:
 
             author_name="Community"
             
-            # URL mein space ki jagah %20 replace kiya gaya hai taaki link sahi chale
-            json_url="${repo_url}/templates/${filename// /%20}"
-            preview_url="${repo_url}/previews/${name_only// /%20}.png"
+            # Link mein space ko %20 se badla gaya hai taaki URL sahi rahe
+            encoded_filename=$(echo "$filename" | sed 's/ /%20/g')
+            encoded_name_only=$(echo "$name_only" | sed 's/ /%20/g')
+
+            json_url="${repo_url}/templates/${encoded_filename}"
+            preview_url="${repo_url}/previews/${encoded_name_only}.png"
 
             echo "$count,$template_name,$author_name,$json_url,$preview_url,General" >> templates.csv
             count=$((count + 1))
