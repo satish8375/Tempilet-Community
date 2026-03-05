@@ -16,7 +16,6 @@ jobs:
       contents: write
 
     steps:
-
       - name: Checkout Repository
         uses: actions/checkout@v4
 
@@ -27,6 +26,8 @@ jobs:
         run: |
           echo "Checking JSON files..."
           shopt -s nullglob
+          # IFS use karne se filenames mein space hone par script nahi tootegi
+          IFS=$'\n'
           for file in templates/*.json; do
             echo "Validating $file"
             jq . "$file" > /dev/null || (echo "Error: $file is not a valid JSON" && exit 1)
@@ -36,18 +37,19 @@ jobs:
       - name: Regenerate templates.csv
         run: |
           echo "Generating templates.csv"
-
           echo "id,template_name,author_name,json_url,preview_url,tags" > templates.csv
 
           count=1
           repo_url="https://raw.githubusercontent.com/${{ github.repository }}/main"
-
+          
           shopt -s nullglob
+          IFS=$'\n'
 
           for file in templates/*.json; do
             filename=$(basename "$file")
             name_only="${filename%.*}"
 
+            # Quotes lagaye hain taaki space se error na aaye
             template_name=$(jq -r '.name // empty' "$file")
 
             if [ -z "$template_name" ] || [ "$template_name" == "null" ]; then
@@ -55,11 +57,12 @@ jobs:
             fi
 
             author_name="Community"
-            json_url="${repo_url}/templates/${filename}"
-            preview_url="${repo_url}/previews/${name_only}.png"
+            
+            # URL mein space ki jagah %20 replace kiya gaya hai taaki link sahi chale
+            json_url="${repo_url}/templates/${filename// /%20}"
+            preview_url="${repo_url}/previews/${name_only// /%20}.png"
 
             echo "$count,$template_name,$author_name,$json_url,$preview_url,General" >> templates.csv
-
             count=$((count + 1))
           done
 
